@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+<form method=post action="/salvar">
+  <legend>Cadastro de Cliente</legend>
+  <dl>
+    {{ render_field(form.nome) }}
+    {{ render_field(form.endereco) }}
+    {{ render_field(form.telefone_cel) }}
+    {{ render_field(form.telefone_res) }}
+    {{ render_field(form.telefone_com) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.data_nascimento) }}
+    {{ render_field(form.ativo) }}
+  </dl>
+  <p><input type=submit value=Register>
+</form>
+
+{%endblock%}
+
+{%block bottom_js%}
+$(document).ready(function() {
+  $('ul.errors li').addClass('alert alert-error');
+});
+{%endblock%}

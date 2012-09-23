@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<table class="table table-condensed table-hover">
+	<thead>
+		<th>#</th>
+		<th>Nome</th>
+		<th>Email</th>
+		<th>Celular</th>
+		<th>Ativo</th>
+	</thead>
+	{%for cliente in clientes%}
+	<tr>
+		<td width="80px">
+			<input type="checkbox" value="{{cliente.id}}">
+			<a href="/edit/{{cliente.id}}/"><i class="icon-edit"></i></a>
+			<a href="/delete/{{cliente.id}}/"><i class="icon-remove"></i></a>
+			<i class="icon-eye-open"></i>
+		</td>
+		<td>{{cliente.nome}}</td>
+		<td>{{cliente.email}}</td>
+		<td>{{cliente.telefone_cel}}</td>
+		<td>
+			{%if cliente.ativo%}
+			<i class="icon-ok-circle"></i>
+			{%else%}
+			<i class="icon-ban-circle"></i>
+			{%endif%}
+		</td>
+
+	</tr>
+	{%endfor%}
+</table>
+
+
+{%endblock%}
